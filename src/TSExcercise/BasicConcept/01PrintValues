@@ -1,0 +1,17 @@
+/**
+ * 1. Write a TypeScript program that declares a variable `name` and assigns it a string value. Also declare a variable `age` and 
+ * assign it a number value. Finally print the values of name and age.
+ */
+let name1 : string = "Nitin";
+let age : number = 35;
+console.log(`My Name is ${name} and Age is ${age}`);
+
+
+/**Write a TypeScript program that declares variables using let, const, and var. 
+ * Then, describe how each declaration type behaves with respect to scoping and mutability.  
+ **/
+
+let iAmLet = "myApple";
+const iAmConst = "myBoy";
+var iAmVar = "myVar";
+
