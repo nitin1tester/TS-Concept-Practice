@@ -1,17 +1,128 @@
 /**
- * 1. Write a TypeScript program that declares a variable `name` and assigns it a string value. Also declare a variable `age` and 
- * assign it a number value. Finally print the values of name and age.
+ * 1. Write a TypeScript program that declares a variable `name` and assigns it a string value. Also declare a variable `age` and assign it a number value. Finally print the values of name and age.
  */
 let name1 : string = "Nitin";
 let age : number = 35;
-console.log(`My Name is ${name} and Age is ${age}`);
+console.log(`My Name is ${name1} and Age is ${age}`);
 
 
-/**Write a TypeScript program that declares variables using let, const, and var. 
- * Then, describe how each declaration type behaves with respect to scoping and mutability.  
+/**
+ * 2. Write a TypeScript program that declares variables using let, const, and var Then, describe how each declaration type behaves with respect to scoping and mutability.  
  **/
 
 let iAmLet = "myApple";
 const iAmConst = "myBoy";
 var iAmVar = "myVar";
 
+/**
+ * 3. Write a TypeScript program that declares variables of the following data types: number, string, boolean, and undefined. Assign values to them and perform basic operations.  
+ * */
+
+let apple : number = 35;
+let naming : string = 'Shivansh';
+let isActive : boolean = true;
+let road : undefined = undefined;
+
+console.log(apple,naming,isActive,road);
+
+/**
+ * 4. Write a TypeScript program that declares a variable as a number and then tries to assign a string to it to see type checking in action.  
+ */
+
+let boy: number = 4;
+// boy="nitin"; // compile time error found.
+
+/**
+ * 6. Write a TypeScript program that converts a variable of one type to another using type assertions and type conversion functions like parseInt().  
+ */
+
+let cat:number = 6;
+let newCat = cat.toString();
+console.log(newCat);
+
+let dog:string = "100";
+let countDog = parseInt(dog);
+console.log(countDog);
+
+/**
+ * 7. Write a TypeScript program that creates type aliases for complex data types such as objects or custom types. Use them to define variables and explain how they improve code readability.  
+ */
+
+type student = {
+    studentName:string,
+    studentClass:string,
+    studentAge:number,
+    studentStatus:boolean;
+}
+
+let student1:student = {
+    studentName : 'Nitin',
+    studentAge:35,
+    studentClass:"PG",
+    studentStatus:true
+};
+
+let student2:student = {
+    studentName : 'Shivansh',
+    studentAge:10,
+    studentClass:"12th",
+    studentStatus:true
+};
+
+console.log(
+    student1.studentName,
+    student1.studentClass,
+    student1.studentAge,
+    student1.studentStatus
+);
+
+/**
+ * 8. Write a TypeScript program that declares an array of a specific data type. It will demonstrates common array operations like adding elements, removing elements, and iterating through the array.  
+ */
+
+let arr1 = [1,2,3,4,5,6,7,8,9];
+function arrayOps(arr : number[]) {
+     arr.unshift(0);
+     arr.push(10);
+     console.log(arr);
+     arr.pop();
+     arr.shift();
+     console.log(arr);
+     if (arr===arr1) {
+        console.log('Now both array are equal again');
+     }else{
+        console.log("Array are unequal");
+     }
+     for (const e of arr) {
+        console.log(e);
+     }
+}
+arrayOps(arr1);
+
+/**
+ * 9. Write a TypeScript program that defines an enumeration 'Color' with values 'Red', 'Green', 'White' and Blue. Create a variable 'selectedColor' of type 'Color' and assign it one of the enumeration values.  
+ */
+
+type ColorType = {
+    selectedColor:string;
+}
+enum Color {
+    RED = 'red',
+    GREEN = 'green',
+    WHITE = 'White',
+    BLUE = 'Bule'
+}
+
+let roomColor:ColorType = {
+    selectedColor: Color.RED,
+} 
+console.log("this color selected for room :" + roomColor.selectedColor);
+
+
+/**
+ * 10. Write a TypeScript program that declares a variable 'isNull' and assigns it null. You should also declare a variable called 'isUndefined' and assign it an undefined value.  
+ */
+
+let isNum:null = null;
+let isUndefined = undefined;
+console.log(isNum,isUndefined);

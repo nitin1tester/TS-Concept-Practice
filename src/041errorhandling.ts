@@ -1,19 +1,46 @@
+/**
+ * ================================================================================
+ * FILE: 041errorhandling.ts - Error Handling with Try-Catch-Finally
+ * ================================================================================
+ * 
+ * CONCEPT OVERVIEW:
+ * This file demonstrates error handling and exception management in TypeScript.
+ * Proper error handling prevents application crashes and provides graceful degradation.
+ * 
+ * KEY CONCEPTS:
+ * - try: Contains code that might throw an error
+ * - catch: Handles errors thrown in try block
+ * - finally: Always executes regardless of success/failure
+ * - Error throwing: Explicitly throw errors for invalid conditions
+ * - never type: Function that never returns (always throws)
+ * 
+ * RULES:
+ * - Only one try block per function (cannot nest multiple try blocks)
+ * - Finally block always runs, even if return statement exists in try/catch
+ * - Can have try without catch if finally block exists
+ * ================================================================================
+ */
+
 // in JS and TS Error Handling and Exception Handling both are same.
 
 /**
+ * ERROR HANDLING FLOW:
  * 
- * 1 
- * 2 -- error -- terminated
- * handling the error -- try -catch block finally
- * no handling -- thew new Error
- * 3 
- * 4
+ * Program Execution:
+ * 1 ✓ OK
+ * 2 -- error -- terminated (if unhandled)
+ * 3 (if error handled, continues here)
+ * 4 ✓ OK
  * 
- * >> Multiple try blocked not allowed.
- * >> we can write try block without catch block but in this case we have to write finilly block.
+ * When error thrown:
+ * - Without handling: Program terminates
+ * - With try-catch: Error is caught and handled, program continues
  */
 
-
+/**
+ * EXAMPLE 1: THROWING CUSTOM ERRORS
+ * Function throws error when division by zero is attempted.
+ */
 function div (a:number, b:number) :number {
     if (b===0) {
         throw new Error("Can't be devided by zero");
@@ -24,7 +51,15 @@ function div (a:number, b:number) :number {
 let result =  div(10,0); 
 console.log(result);
 
-// json to JS Object
+/**
+ * EXAMPLE 2: TRY-CATCH-FINALLY PATTERN
+ * Safe JSON parsing with error handling and cleanup.
+ * 
+ * EXECUTION ORDER:
+ * 1. Execute try block
+ * 2. If error: Jump to catch block
+ * 3. Finally always executes last
+ */
 function parsing() {
 
     try{
@@ -41,8 +76,12 @@ function parsing() {
 parsing();
 console.log("Done");
 
-// 
-
+/**
+ * NEVER RETURN TYPE:
+ * The 'never' type indicates a function that never returns normally.
+ * Function always throws an error.
+ * TypeScript-only feature to indicate unreachable code.
+ */
 function m1():never {
     throw new Error("this is my error");  
 }

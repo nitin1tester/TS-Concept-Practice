@@ -49,17 +49,13 @@ console.log("==================console methods========================");
 
 
 let nArr1:number[] = [2,4,2,4,5,6,5,8,9,4,2,4,5,3,5];
-
 let user = {
     name:"nitin",
     age:35,
     city:"pune",
     status:true
 }
-
 console.table(user);
-
-
 for(const e of nArr1){
     // console.count();
     // console.clear();
@@ -67,6 +63,8 @@ for(const e of nArr1){
     // console.time();
     
 }
+
+console.log("==========================================");
 
 
 
