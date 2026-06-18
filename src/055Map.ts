@@ -1,0 +1,242 @@
+import { test } from "@mobilewright/test";
+
+
+let arr1 = [1,2,3,4,3,6,2,7,98,6,2,4,6,5,6,7,8,9];
+let set1 = new Set(arr1);
+// console.log(arr1);
+// console.log(set1);
+// let uniqueArray = [...set1];
+// console.log(uniqueArray);
+set1.add(25);
+console.log(set1);
+set1.delete(98);
+console.log(set1);
+// set1.clear();
+// console.log(set1);
+let flag:boolean = set1.has(26);
+console.log(flag);
+
+
+
+/**
+ * Map
+ */
+
+
+let myMap = new Map();
+myMap.set('username','Nitin');
+myMap.set('lastname','Rastogi');
+myMap.set('age',35);
+myMap.set('status',true);
+//print map
+console.log(myMap);
+// map size
+console.log(myMap.size);
+// delete one value where key is lastname
+myMap.delete('lastname');
+console.log(myMap);
+// has key 
+console.log(myMap.has('age'));
+console.log(myMap.has('test'));
+// 
+console.log(myMap.values());
+console.log(myMap.keys());
+myMap.clear();
+console.log(myMap);
+
+/**
+ * Maps and array
+ */
+
+/**
+ * Question 1 do it using Map
+ */
+
+let result = [
+    {suite:'Auth',duration:120},
+    {suite:'Checkout',duration:300},
+    {suite:'Auth',duration:80},
+] 
+let objMap = new Map<string,number>();
+for(let {suite,duration} of result){
+    objMap.set( suite , (objMap.get(suite) ?? 0) + duration);
+}
+console.log(objMap);
+
+/**
+ * Question 2
+ * 
+ */
+
+let baseLine = [
+    {id: 'TC1', status:'pass'},
+    {id: 'TC2', status:'pass'},
+]
+
+let actual = [
+    {id: 'TC1', status:'pass'},
+    {id: 'TC2', status:'fail'},
+]
+
+
+
+const tests = [
+  { suite: 'Auth' },
+  { suite: 'Checkout' },
+  { suite: 'Auth' },
+  { suite: 'Search' },
+  { suite: 'Auth' }
+];
+
+let mapOne = new Map<string,number>();
+for(let {suite} of tests){
+    mapOne.set(suite,(mapOne.get(suite)??0)+1);
+} 
+console.log(mapOne);
+
+
+const test2 = [
+  { suite: 'Auth', duration: 100 },
+  { suite: 'Checkout', duration: 200 },
+  { suite: 'Auth', duration: 50 }
+];
+
+let mapTwo = new Map<string,number>();
+for(let {suite,duration} of test2){
+    mapTwo.set( suite  , (mapTwo.get(suite) ?? 0) + duration)
+}
+console.log(mapTwo);
+
+const test3 = [
+  { status: 'PASS' },
+  { status: 'FAIL' },
+  { status: 'PASS' },
+  { status: 'PASS' }
+];
+
+let mapThree = new Map();
+
+for(let {status} of test3){
+    mapThree.set(status , (mapThree.get(status) ?? 0)+1 )
+}
+console.log(mapThree);
+
+const test4 = [
+  { suite: 'Auth', duration: 300 },
+  { suite: 'Auth', duration: 250 },
+  { suite: 'Auth', duration: 150 }
+];
+
+let mapFour = new Map();
+
+for(let {suite,duration} of test4){
+    mapFour.set(suite, (mapFour.get(suite)??0) < duration ? duration :  mapFour.get(suite))
+}
+console.log(mapFour);
+
+const test5 = [
+  { suite: 'Auth', test: 'Login' },
+  { suite: 'Auth', test: 'Logout' },
+  { suite: 'Checkout', test: 'Payment' },
+  { suite: 'Auth', test: 'Logout' },
+];
+let mapFive = new Map<string,string[]>();
+
+for(let {suite,test} of test5){
+    let arr = (mapFive.get(suite) ?? [])
+    let setOne = new Set(arr);
+    setOne.add(test)
+    mapFive.set(suite,[...setOne])
+}
+console.log(mapFive);
+
+const test6 = [
+  { status: 'FAIL', duration: 100 },
+  { status: 'PASS', duration: 50 },
+  { status: 'FAIL', duration: 200 }
+];
+
+let mapSix = new Map<string,number>();
+
+for(let {status,duration} of test6){
+    mapSix.set(status , (mapSix.get(status) ?? 0) + duration)
+}
+console.log(mapSix.get('FAIL'));
+
+const runs = [
+  { browser: 'Chrome' },
+  { browser: 'Firefox' },
+  { browser: 'Chrome' },
+  { browser: 'Edge' }
+];
+
+let mapSeven = new Map<string,number>();
+
+for(let {browser} of runs ){
+    mapSeven.set(browser, (mapSeven.get(browser) ?? 0) + 1 )
+}
+console.log(mapSeven);
+
+const test8 = [
+  'login',
+  'logout',
+  'login',
+  'payment',
+  'logout'
+];
+
+let mapEight = new Map<string,number>();
+let setTwo = new Set();
+for(let str of test8 ){
+    mapEight.set(str, (mapEight.get(str) ?? 0) + 1 );
+    if((mapEight.get(str)??0) > 1){
+        setTwo.add(str);
+    }
+}
+console.log([...setTwo]);
+
+const test9 = [
+  { suite: 'Auth', duration: 100 },
+  { suite: 'Auth', duration: 200 },
+  { suite: 'Checkout', duration: 300 }
+];
+let mapSum = new Map<string,number>();
+let mapCount = new Map<string,number>();
+
+for(let {suite,duration} of test9){
+    mapSum.set(suite, (mapSum.get(suite) ?? 0) + duration);
+    mapCount.set(suite, (mapCount.get(suite) ?? 0) + 1 );
+}
+// console.log(mapCount);
+// console.log(mapSum);
+let mapAvg = new Map<string,number>();
+for(let suite of mapSum.keys()){
+    
+    mapAvg.set(suite , (mapSum.get(suite)! /mapCount.get(suite)!)  )
+}
+console.log(mapAvg);
+
+
+const test10 = [
+  { suite: 'Auth' },
+  { suite: 'Checkout' },
+  { suite: 'Auth' },
+  { suite: 'Auth' }
+];
+
+let mapten = new Map<string,number>();
+let setTen = new Set();
+let max = 0;
+let val = null;
+for(let {suite} of test10){
+    mapten.set(suite, (mapten.get(suite) ?? 0) + 1);
+}
+for(let suite of mapten){    
+    if (suite[1]>max){
+        max = suite[1];
+        val = suite[0];
+    }
+}
+console.log(val);
+
+
