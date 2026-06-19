@@ -1,25 +1,41 @@
-const test10 = [
-  { suite: 'Auth' },
-  { suite: 'Checkout' },
-   { suite: 'Checkout' },
-    { suite: 'Checkout' },
-     { suite: 'Checkout' },
-      { suite: 'Checkout' },
-  { suite: 'Auth' },
-  { suite: 'Auth' }
+const defects = [
+  {
+    defectId: "D1",
+    severity: "Critical",
+    module: "Auth"
+  },
+  {
+    defectId: "D2",
+    severity: "Major",
+    module: "Auth"
+  },
+  {
+    defectId: "D3",
+    severity: "Critical",
+    module: "Checkout"
+  }
 ];
 
-let mapten = new Map<string,number>();
-let setTen = new Set();
-let max = 0;
-let val = null;
-for(let {suite} of test10){
-    mapten.set(suite, (mapten.get(suite) ?? 0) + 1);
+type defectSummery = {
+    total:number,
+    critical:number,
+    major:number
 }
-for(let suite of mapten){    
-    if (suite[1]>max){
-        max = suite[1];
-        val = suite[0];
+
+let mapDefect = new Map<string,defectSummery>();
+
+for(let {severity,module} of defects){
+    let defectData = mapDefect.get(module) ?? {
+        total:0,
+        critical:0,
+        major:0
+    } 
+    defectData.total++;
+    if(severity==="Critical"){
+        defectData.critical++
+    }else{
+        defectData.major++
     }
+    mapDefect.set(module,defectData);
 }
-console.log(val);
+console.log(mapDefect);

@@ -387,3 +387,79 @@ const executionsFour = [
   { browser: "Firefox", duration: 300 },
   { browser: "Firefox", duration: 100 }
 ];
+
+type performObj = {
+    totalRuns:number,
+    totalDuration:number,
+    avgDuration:number
+}
+
+let mapExeFour = new Map<string,performObj>();
+
+for(let {browser,duration} of executionsFour){
+    let exeData = mapExeFour.get(browser) ?? {
+        totalDuration:0,
+        totalRuns:0,
+        avgDuration:0
+    }
+    exeData.totalRuns++;
+    exeData.totalDuration = exeData.totalDuration + duration;
+    exeData.avgDuration = exeData.totalDuration/exeData.totalRuns
+    mapExeFour.set(browser,exeData);
+}
+console.log(mapExeFour);
+
+//Question 5: Build Defect Summary
+
+const defects = [
+  {
+    defectId: "D1",
+    severity: "Critical",
+    module: "Auth"
+  },
+  {
+    defectId: "D2",
+    severity: "Major",
+    module: "Auth"
+  },
+  {
+    defectId: "D3",
+    severity: "Critical",
+    module: "Checkout"
+  }
+];
+
+type defectSummery = {
+    total:number,
+    critical:number,
+    major:number
+}
+
+let mapDefect = new Map<string,defectSummery>();
+
+for(let {severity,module} of defects){
+    let defectData = mapDefect.get(module) ?? {
+        total:0,
+        critical:0,
+        major:0
+    } 
+    defectData.total++;
+    if(severity==="Critical"){
+        defectData.critical++
+    }else{
+        defectData.major++
+    }
+    mapDefect.set(module,defectData);
+}
+console.log(mapDefect);
+
+// Question 6: Detect Cross-Browser Tests
+
+const executionSix = [
+  { testName: "Login", browser: "Chrome" },
+  { testName: "Login", browser: "Firefox" },
+  { testName: "Logout", browser: "Chrome" },
+  { testName: "Payment", browser: "Edge" },
+  { testName: "Payment", browser: "Chrome" }
+];
+
