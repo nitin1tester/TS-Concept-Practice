@@ -1,41 +1,20 @@
-const defects = [
-  {
-    defectId: "D1",
-    severity: "Critical",
-    module: "Auth"
-  },
-  {
-    defectId: "D2",
-    severity: "Major",
-    module: "Auth"
-  },
-  {
-    defectId: "D3",
-    severity: "Critical",
-    module: "Checkout"
-  }
+
+const executionSix = [
+  { testName: "Login", browser: "Chrome" },
+  { testName: "Login", browser: "Firefox" },
+  { testName: "Logout", browser: "Chrome" },
+  { testName: "Payment", browser: "Edge" },
+  { testName: "Payment", browser: "Chrome" }
 ];
 
-type defectSummery = {
-    total:number,
-    critical:number,
-    major:number
-}
-
-let mapDefect = new Map<string,defectSummery>();
-
-for(let {severity,module} of defects){
-    let defectData = mapDefect.get(module) ?? {
-        total:0,
-        critical:0,
-        major:0
-    } 
-    defectData.total++;
-    if(severity==="Critical"){
-        defectData.critical++
-    }else{
-        defectData.major++
+let mapExeSix = new Map<string,Set<string>>();
+let finalResult = new Set<string>();
+for(let {testName,browser} of executionSix ){
+    let setData = mapExeSix.get(testName)?? new Set<string>();
+    mapExeSix.set(testName,setData.add(browser))
+    if(setData.size>1){
+        finalResult.add(testName)
     }
-    mapDefect.set(module,defectData);
 }
-console.log(mapDefect);
+
+console.log(finalResult);
