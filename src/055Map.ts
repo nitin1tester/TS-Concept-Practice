@@ -472,9 +472,187 @@ for(let {testName,browser} of executionSix ){
         finalResult.add(testName)
     }
 }
-
 console.log(finalResult);
 
+// Question 7: Employee Skill Matrix
 
+const employees = [
+  {
+    name: "Nitin",
+    skill: "Playwright",
+    project: "Converse"
+  },
+  {
+    name: "Nitin",
+    skill: "RestAssured",
+    project: "Converse"
+  },
+  {
+    name: "Rahul",
+    skill: "Playwright",
+    project: "CRM"
+  }
+];
+
+type ability = {
+    skills:Set<string>,
+    projects:Set<string>
+}
+
+let mapExeSeven = new Map<string,ability>();
+
+for(let {name,skill,project} of employees){
+    let abilityData = mapExeSeven.get(name)??{
+        skills:new Set<string>(),
+        projects:new Set<string>()
+    }
+    abilityData.skills.add(skill);
+    abilityData.projects.add(project);
+    mapExeSeven.set(name,abilityData)
+}
+console.log(mapExeSeven);
+
+// Question 8: Generate Automation Coverage Report
+
+const testsEight = [
+  {
+    module: "Auth",
+    type: "UI"
+  },
+  {
+    module: "Auth",
+    type: "API"
+  },
+  {
+    module: "Auth",
+    type: "UI"
+  },
+  {
+    module: "Checkout",
+    type: "API"
+  }
+];
+
+type covrage = {
+    total:number,
+    types:Set<string>
+}
+
+let mapExeEight = new Map<string,covrage>();
+
+for(let {module,type} of testsEight){
+    let coverageData = mapExeEight.get(module)??{
+        total:0,
+        types: new Set<string>()
+    }
+    coverageData.total++;
+    coverageData.types.add(type)
+    mapExeEight.set(module,coverageData)
+}
+console.log(mapExeEight);
+
+//Question 9: Find Slowest Test Per Suite
+
+const testNine = [
+  {
+    suite: "Auth",
+    testName: "Login",
+    duration: 100
+  },
+  {
+    suite: "Auth",
+    testName: "Logout",
+    duration: 300
+  },
+  {
+    suite: "Checkout",
+    testName: "Payment",
+    duration: 200
+  }
+];
+
+type slowTestObj = {
+    testName:string,
+    duration:number
+}
+
+let mapExeNine = new Map<string, slowTestObj >();
+
+for(let {suite,testName, duration} of testNine){
+    let slowTestData = mapExeNine.get(suite)??{
+        testName:"",
+        duration:0
+    }
+    slowTestData.duration = duration ;
+    slowTestData.testName = testName;
+    if(slowTestData.duration < duration){
+        slowTestData.duration = duration;
+    }
+    mapExeNine.set(suite,slowTestData )
+}
+console.log(mapExeNine);
+
+
+// Question 10 (Lead SDET Level)
+
+const executionTen = [
+  {
+    suite: "Auth",
+    browser: "Chrome",
+    status: "PASS",
+    duration: 100
+  },
+  {
+    suite: "Auth",
+    browser: "Firefox",
+    status: "FAIL",
+    duration: 200
+  },
+  {
+    suite: "Auth",
+    browser: "Chrome",
+    status: "PASS",
+    duration: 150
+  },
+  {
+    suite: "Checkout",
+    browser: "Chrome",
+    status: "PASS",
+    duration: 300
+  }
+];
+
+type finalObj = {
+    total:number,
+      pass: number,
+      fail: number,
+      avgDuration: number,
+      totalduration:number,
+      browsers: Set<string>
+}
+
+let mapfix = new Map<string,finalObj>();
+
+for(let {suite,browser,status, duration} of executionTen){
+    let finalData = mapfix.get(suite)??{
+        total:0,
+        pass: 0,
+        fail: 0,
+        avgDuration: 0,
+        totalduration:0,
+        browsers: new Set<string>()
+    }
+    finalData.total++;
+    if (status==="PASS") {
+        finalData.pass++
+    }else{
+        finalData.fail++
+    }
+    finalData.totalduration = finalData.totalduration + duration;
+    finalData.avgDuration = finalData.totalduration/finalData.total;
+    finalData.browsers.add(browser);
+    mapfix.set(suite, finalData)
+}
+console.log(mapfix);
 
 
