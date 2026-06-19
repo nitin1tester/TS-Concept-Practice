@@ -1,32 +1,18 @@
-const testFinal = [
-  { suite: 'Auth', status: 'PASS', duration: 100 },
-  { suite: 'Auth', status: 'FAIL', duration: 50 },
-  { suite: 'Checkout', status: 'PASS', duration: 200 }
+
+const executiosThree = [
+  { testName: "Login", status: "PASS" },
+  { testName: "Login", status: "FAIL" },
+  { testName: "Logout", status: "PASS" },
+  { testName: "Payment", status: "PASS" },
+  { testName: "Payment", status: "FAIL" }
 ];
 
-type statsObj = {
-    total:number,
-    pass:number,
-    fail:number,
-    duration:number
-}
+let mapFailTestName = new Map<string,Set<string>>();
 
-let mapFinale = new Map<string, statsObj >();
-
-for(let {suite,status,duration} of testFinal){
-    let stat = mapFinale.get(suite) ?? {
-        total:0,
-        pass:0,
-        fail:0,
-        duration:0
-    }
-    stat.total++;
-    stat.duration= stat.duration + duration;
-    if(status==="PASS"){
-        stat.pass++;
-    }else{
-        stat.fail++;
-    }
-    mapFinale.set(suite, stat );
+for(let {testName,status} of executiosThree){
+    let setThree = new Set<string>();
+    let testSet:Set<string> = (mapFailTestName.get(status) ?? setThree)
+    mapFailTestName.set(status, testSet.add(testName) )
 }
-console.log(mapFinale);
+// console.log(mapFailTestName);
+console.log(mapFailTestName.get("FAIL"));
