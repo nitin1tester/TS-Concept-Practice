@@ -193,3 +193,14 @@ for(let {testName,status} of executiosThree){
 }
 // console.log(mapFailTestName);
 console.log(mapFailTestName.get("FAIL"));
+
+// Question 4: Browser Performance Report
+
+const executionsFour = [
+  { browser: "Chrome", duration: 100 },
+  { browser: "Chrome", duration: 200 },
+  { browser: "Firefox", duration: 300 },
+  { browser: "Firefox", duration: 100 }
+];
+
+
