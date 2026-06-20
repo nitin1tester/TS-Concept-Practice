@@ -32,7 +32,6 @@ const arrThree = [1, 2, 3, 4,1, 5];
 let mapThree = new Map<number,number>();
 let flag = true;
 for(let num of arrThree){
-    let count = 0;
     mapThree.set(num,(mapThree.get(num)??0)+1)
     if(mapThree.get(num)! > 1){
         flag = false;
@@ -40,3 +39,50 @@ for(let num of arrThree){
 }
 console.log(flag);
 
+//4. Find Common Elements Between Two Arrays
+const arr2 = [1, 2, 3, 4];
+const arr3 = [3, 4, 5, 6];
+let arrComb:number[] = arr2.concat(arr3);
+let mapFour = new Map<number,number>();
+let setFour = new Set<number>();
+for(let num of arrComb){
+    mapFour.set(num,(mapFour.get(num)??0)+1)
+    if(mapFour.get(num)!>1){
+        setFour.add(num)
+    }
+}
+console.log([...setFour]);
+
+// 5. Find Distinct Browsers Used in Test Runs
+const runs = [
+  { browser: "Chrome" },
+  { browser: "Firefox" },
+  { browser: "Chrome" },
+  { browser: "Edge" }
+];
+let setFive = new Set<string>();
+for(let {browser} of runs){
+    setFive.add(browser);
+}
+console.log([...setFive]);
+
+// 6. Count Occurrences of Numbers
+
+const arrSix = [1, 2, 1, 3, 2, 1, 4];
+
+let mapSix = new Map<number,number>();
+
+for(let num of arrSix){
+    mapSix.set(num,(mapSix.get(num)??0)+1);
+}
+console.log(mapSix);
+
+// 7. Count Occurrences of Characters
+
+const strSeven = "playwright";
+let splitStrSeven:string[] = strSeven.split('');
+let mapSeven = new Map<string,number>();
+for(let ch of splitStrSeven){
+    mapSeven.set(ch,(mapSeven.get(ch)??0)+1);
+}
+console.log(mapSeven);
