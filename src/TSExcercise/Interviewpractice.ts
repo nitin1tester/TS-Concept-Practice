@@ -69,9 +69,7 @@ console.log([...setFive]);
 // 6. Count Occurrences of Numbers
 
 const arrSix = [1, 2, 1, 3, 2, 1, 4];
-
 let mapSix = new Map<number,number>();
-
 for(let num of arrSix){
     mapSix.set(num,(mapSix.get(num)??0)+1);
 }
@@ -79,17 +77,22 @@ console.log(mapSix);
 
 // 7. Count Occurrences of Characters
 
-const strSeven = "playwright";
+const strS = "playwright";
+let strSev = function countOccurrences(strSeven:string):Map<String,number>{
 let splitStrSeven:string[] = strSeven.split('');
 let mapSeven = new Map<string,number>();
 for(let ch of splitStrSeven){
     mapSeven.set(ch,(mapSeven.get(ch)??0)+1);
 }
-console.log(mapSeven);
+return mapSeven;
+}
+console.log(strSev(strS));
 
 // 8. Find First Non-Repeated Character
 
-const strEight = "aabbcdde";
+const strE = "aafbbcdde";
+let nonRepeatedChar = (strEight:string) : string =>{
+let resultEight:string = ""
 let strEightArr:string[] = strEight.split('');
 let strEightMap = new Map<string,number>();
 for(let ch of strEightArr ){
@@ -97,7 +100,11 @@ for(let ch of strEightArr ){
 }
 for(let obj of strEightMap){
     if(obj[1]===1){
-        console.log(obj[0]);
+        resultEight = obj[0];
         break;
     }
 }
+return resultEight;
+}
+let outputEight = nonRepeatedChar(strE);
+console.log(outputEight);
