@@ -1,11 +1,16 @@
-const strS = "playwright";
+const arrNine = [1, 2, 3, 2, 4, 1, 5];
 
-let strSev = function countOccurrences(strSeven:string):Map<String,number>{
-let splitStrSeven:string[] = strSeven.split('');
-let mapSeven = new Map<string,number>();
-for(let ch of splitStrSeven){
-    mapSeven.set(ch,(mapSeven.get(ch)??0)+1);
+let duplicateNum = (arr:number[]):number[] => {
+    let mapNine = new Map<number,number>();
+    let setNine = new Set<number>(); 
+    for(let num of arr){
+        mapNine.set(num,(mapNine.get(num)??0)+1);
+        if(mapNine.get(num)!>1){
+            setNine.add(num);
+        }
+    }
+    return [...setNine]
 }
-return mapSeven;
-}
-console.log(strSev(strS));
+
+let resNine =  duplicateNum(arrNine);
+console.log(resNine);
