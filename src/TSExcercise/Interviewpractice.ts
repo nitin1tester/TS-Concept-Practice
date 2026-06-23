@@ -127,3 +127,5 @@ let duplicateNum = (arr:number[]):number[] => {
 }
 let resNine =  duplicateNum(arrNine);
 console.log(resNine);
+
+// 
