@@ -1,13 +1,16 @@
-const arrEleven = [1, 2, 3, 2, 1, 2, 2, 4];
+const employees = [
+  { name: "Nitin", dept: "QA" },
+  { name: "Rahul", dept: "Dev" },
+  { name: "Amit", dept: "QA" },
+  { name: "Nitin", dept: "QA" },
+  { name: "Priya", dept: "Dev" }
+];
 
-let mapEleven = new Map<number,number>();
-let max = 0;
-let largeKey = 0
-for(let num of arrEleven){
-    mapEleven.set(num,(mapEleven.get(num)??0)+1);
-    if(mapEleven.get(num)!>max){
-        max=mapEleven.get(num)!;
-        largeKey = num;
-    }
+let mapTwle = new Map<string, string[]>()
+
+for (let {name,dept} of employees){
+    let myArr = mapTwle.get(dept)??[];
+    myArr.push(name);
+    mapTwle.set(dept,myArr)
 }
-console.log(largeKey);
+console.log(mapTwle);
