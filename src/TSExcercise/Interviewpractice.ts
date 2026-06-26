@@ -194,3 +194,40 @@ for (let {suite} of runsFifteen){
     mapfifteen.set(suite,(mapfifteen.get(suite)??0)+1);
 }
 console.log(mapfifteen);
+
+// 14. Find All Duplicate Test Names
+
+const testsFourteen = [
+  "Login",
+  "Search",
+  "Checkout",
+  "Login",
+  "Search"
+];
+
+let mapFourteen = new Map<string,number>();
+let setFourteen = new Set<string>();
+for(let str of testsFourteen){
+    mapFourteen.set(str,(mapFourteen.get(str)??0)+1);
+    if(mapFourteen.get(str)!>1){
+        setFourteen.add(str);
+    }
+}
+console.log([...setFourteen]);
+
+// 13. Count Browser Executions
+
+const executions = [
+  { browser: "Chrome" },
+  { browser: "Firefox" },
+  { browser: "Chrome" },
+  { browser: "Edge" },
+  { browser: "Chrome" }
+];
+
+let mapThirteen = new Map<string,number>();
+
+for(let {browser} of executions){
+    mapThirteen.set(browser,(mapThirteen.get(browser)??0)+1);
+}
+console.log(mapThirteen);

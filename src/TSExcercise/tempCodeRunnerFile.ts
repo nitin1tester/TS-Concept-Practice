@@ -1,14 +1,14 @@
-const runsFifteen = [
-  { suite: "Auth" },
-  { suite: "Auth" },
-  { suite: "Checkout" },
-  { suite: "Search" },
-  { suite: "Auth" }
+const executions = [
+  { browser: "Chrome" },
+  { browser: "Firefox" },
+  { browser: "Chrome" },
+  { browser: "Edge" },
+  { browser: "Chrome" }
 ];
 
-let mapfifteen = new Map<string, number>();
+let mapThirteen = new Map<string,number>();
 
-for (let {suite} of runsFifteen){
-    mapfifteen.set(suite,(mapfifteen.get(suite)??0)+1);
+for(let {browser} of executions){
+    mapThirteen.set(browser,(mapThirteen.get(browser)??0)+1);
 }
-console.log(mapfifteen);
+console.log(mapThirteen);
