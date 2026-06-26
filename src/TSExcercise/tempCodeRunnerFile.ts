@@ -1,16 +1,14 @@
-const employees = [
-  { name: "Nitin", dept: "QA" },
-  { name: "Rahul", dept: "Dev" },
-  { name: "Amit", dept: "QA" },
-  { name: "Nitin", dept: "QA" },
-  { name: "Priya", dept: "Dev" }
+const runsFifteen = [
+  { suite: "Auth" },
+  { suite: "Auth" },
+  { suite: "Checkout" },
+  { suite: "Search" },
+  { suite: "Auth" }
 ];
 
-let mapTwle = new Map<string, string[]>()
+let mapfifteen = new Map<string, number>();
 
-for (let {name,dept} of employees){
-    let myArr = mapTwle.get(dept)??[];
-    myArr.push(name);
-    mapTwle.set(dept,myArr)
+for (let {suite} of runsFifteen){
+    mapfifteen.set(suite,(mapfifteen.get(suite)??0)+1);
 }
-console.log(mapTwle);
+console.log(mapfifteen);
