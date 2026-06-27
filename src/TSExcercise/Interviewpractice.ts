@@ -196,7 +196,6 @@ for (let {suite} of runsFifteen){
 console.log(mapfifteen);
 
 // 14. Find All Duplicate Test Names
-
 const testsFourteen = [
   "Login",
   "Search",
@@ -204,7 +203,6 @@ const testsFourteen = [
   "Login",
   "Search"
 ];
-
 let mapFourteen = new Map<string,number>();
 let setFourteen = new Set<string>();
 for(let str of testsFourteen){
@@ -216,7 +214,6 @@ for(let str of testsFourteen){
 console.log([...setFourteen]);
 
 // 13. Count Browser Executions
-
 const executions = [
   { browser: "Chrome" },
   { browser: "Firefox" },
@@ -224,9 +221,7 @@ const executions = [
   { browser: "Edge" },
   { browser: "Chrome" }
 ];
-
 let mapThirteen = new Map<string,number>();
-
 for(let {browser} of executions){
     mapThirteen.set(browser,(mapThirteen.get(browser)??0)+1);
 }
