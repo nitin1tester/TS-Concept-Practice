@@ -145,9 +145,7 @@ for(let str of results){
 console.log(mapTen);
 
 // 11. Most Frequent Element
-
 const arrEleven = [1, 2, 3, 2, 1, 2, 2, 4];
-
 let mapEleven = new Map<number,number>();
 let max = 0;
 let largeKey = 0
@@ -179,7 +177,6 @@ for (let {name,dept} of employees){
 console.log(mapTwle);
 
 // 15. Find Unique Suites and Their Execution Counts
-
 const runsFifteen = [
   { suite: "Auth" },
   { suite: "Auth" },
