@@ -20,14 +20,12 @@ let setOne = new Set(arrOne);
 console.log([...setOne]);
 
 // 2. Find Unique Characters in a String
-
 const str = "automation";
 let sp:string[] = str.split('')
 let setTwo = new Set(sp);
 console.log([...setTwo]);
 
 // 3. Check if Array Contains Duplicates
-
 const arrThree = [1, 2, 3, 4,1, 5];
 let mapThree = new Map<number,number>();
 let flag = true;
@@ -67,7 +65,6 @@ for(let {browser} of runs){
 console.log([...setFive]);
 
 // 6. Count Occurrences of Numbers
-
 const arrSix = [1, 2, 1, 3, 2, 1, 4];
 let mapSix = new Map<number,number>();
 for(let num of arrSix){
