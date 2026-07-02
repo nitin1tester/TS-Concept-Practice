@@ -220,3 +220,6 @@ for(let {browser} of executions){
     mapThirteen.set(browser,(mapThirteen.get(browser)??0)+1);
 }
 console.log(mapThirteen);
+
+// 1. Group Anagrams
+
